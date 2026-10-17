@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mirza Muhammad Jamal Nasir — ML Engineer & Educator</title>
+  <meta name="description" content="Mirza Muhammad Jamal Nasir — AI & Machine Learning Engineer, Computer Science educator. MSc Data Science (Advanced Research). Projects: NLP, CV, time series, LLM fine-tuning research (QLoRA vs IA³).">
+  <style>
+    /* ---- Basic reset & typography ---- */
+    :root{
+      --bg: #fbfcfd;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #6b9df6;
+      --accent-2: #7dd3c6;
+      --text: #0f172a;
+      --glass: rgba(255,255,255,0.6);
+      --max-width: 1100px;
+      --radius: 12px;
+      --shadow: 0 6px 20px rgba(15,23,42,0.06);
+      --glass-border: rgba(99,102,241,0.06);
+      --focus: 3px solid rgba(107,157,246,0.18);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color:var(--text);
+      background: linear-gradient(180deg,var(--bg),#f6f9ff);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:24px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--max-width);}
+
+    /* ---- Header ---- */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .avatar{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;box-shadow:var(--shadow);
+    }
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px;border-radius:8px}
+    nav a:focus,nav a:hover{color:var(--text);outline:none;background:rgba(107,157,246,0.06)}
+    .cta{background:linear-gradient(90deg,var(--accent),#8fb9ff);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
+    .menu-toggle{display:none;background:none;border:2px solid transparent;padding:8px;border-radius:8px}
+    .menu-toggle:focus{outline:none;box-shadow:var(--focus)}
+
+    /* ---- Hero ---- */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:24px;
+      align-items:center;
+      margin-bottom:32px;
+    }
+    .hero-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--glass-border);
+    }
+    h1{font-size:28px;margin:0 0 8px}
+    h2{font-size:16px;margin:0;color:var(--muted);font-weight:600}
+    .hero-intro{margin:14px 0 18px;color:#2b3a4a}
+    .contact-line{display:flex;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#f4f8ff,#f6fff9);padding:8px 10px;border-radius:10px;border:1px solid #eef2ff;font-weight:600;color:#0f172a}
+
+    /* ---- Right column quick stats ---- */
+    .quick{
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .card-mini{background:linear-gradient(180deg,#ffffff,#fbfbff);padding:16px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+    .card-mini strong{font-size:14px}
+    .card-mini small{color:var(--muted);font-size:13px}
+
+    /* ---- Sections ---- */
+    section{margin-bottom:28px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .section-head h3{margin:0;font-size:18px}
+    .grid{display:grid;gap:16px}
+    .skills-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+    .skill{background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--glass-border);display:flex;align-items:center;gap:10px}
+    .skill .dot {
+  display: block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  min-height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+    /* ---- Projects ---- */
+    .projects-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .project{background:var(--card);padding:16px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+    .project h4{margin:0}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+    .project .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+    .btn-small{display:inline-block;padding:8px 10px;border-radius:10px;text-decoration:none;background:rgba(107,157,246,0.08);color:var(--accent);font-weight:700}
+
+    /* ---- Experience / Teaching ---- */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .item{background:var(--card);padding:14px;border-radius:10px;border:1px solid var(--glass-border);box-shadow:var(--shadow)}
+    .meta-line{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px}
+
+    /* ---- Education ---- */
+    .edu{display:flex;flex-direction:column;gap:8px}
+    .highlight{background:linear-gradient(90deg,rgba(107,157,246,0.08),rgba(125,211,198,0.05));padding:12px;border-radius:10px;border:1px solid var(--glass-border)}
+
+    /* ---- Contact ---- */
+    .contact-grid{grid-template-columns:1fr 360px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,button,select{
+      font:inherit;padding:10px;border-radius:8px;border:1px solid #e6eefc;background:white;
+    }
+    input:focus,textarea:focus{outline:none;box-shadow:var(--focus)}
+    button{background:linear-gradient(90deg,var(--accent),#8fb9ff);color:white;border:none;cursor:pointer;padding:12px;border-radius:10px;font-weight:700}
+    button[disabled]{opacity:0.6;cursor:default}
+
+    footer{margin-top:20px;padding:20px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* ---- Responsive ---- */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; }
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:720px){
+      nav{display:none}
+      .menu-toggle{display:inline-flex}
+      header{align-items:center}
+    }
+    /* small accessible focus visibility */
+    a:focus-visible,button:focus-visible{outline:none;box-shadow:var(--focus)}
+
+
+    /* LinkedIn and GitHub profile buttons */
+    .social-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .social-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 750;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, background-color 0.25s ease,
+                  color 0.25s ease, box-shadow 0.25s ease,
+                  border-color 0.25s ease;
+    }
+    .social-button.linkedin {
+      background: #0A66C2;
+      border-color: #0A66C2;
+    }
+    .social-button.github {
+      background: #24292f;
+      border-color: #24292f;
+    }
+    .social-button:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.08);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+    }
+    .social-button:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+    .social-button:focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <header>
+      <a class="brand" href="#top">
+        <div class="avatar" aria-hidden="true">MJ</div>
+        <div>
+          <div style="font-weight:800">Mirza Muhammad Jamal Nasir</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:3px">AI & Machine Learning Engineer • Educator</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" id="menuToggle">Menu</button>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div class="hero-card" aria-labelledby="hero-heading">
+          <h1 id="hero-heading">Mirza Muhammad Jamal Nasir</h1>
+          <h2>MACHINE LEARNING ENGINEER · COMPUTER SCIENCE EDUCATOR</h2>
+          <p class="hero-intro">
+            Dynamic academic and industry professional with extensive experience teaching and delivering AI,
+            Machine Learning and Data Science solutions. I design curriculum, mentor students and lead ML projects
+            spanning NLP, Computer Vision, time-series and LLM adaptation. Open to teaching & research collaborations.
+          </p>
+
+          <div class="contact-line" aria-hidden="false">
+            <span class="pill">📍 Tooting, London, United Kingdom</span>
+            <span class="pill">📞 <a href="tel:+447946759658" style="text-decoration:none;color:inherit">+44 7946 759658</a></span>
+            <span class="pill">✉️ <a href="mailto:mirzajamal750@gmail.com" style="text-decoration:none;color:inherit">mirzajamal750@gmail.com</a></span>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+<a class="btn-small"
+   href="./Mirza-Muhammad-Jamal-Nasir-CV.pdf"
+   download="Mirza-Muhammad-Jamal-Nasir-CV.pdf">
+  Download CV ↓
+</a>
+
+            <a class="btn-small"href="https://www.linkedin.com/in/mirza-jamal-mlengg"target="_blank"rel="noopener noreferrer">Message me on LinkedIn</a>
+            <a class="btn-small"href="https://github.com/mirzajamalnasir750"target="_blank"rel="noopener noreferrer">GitHub</a>
+
+          </div>
+        </div>
+
+        <aside class="quick" aria-label="Quick profile">
+          <div class="card-mini" aria-hidden="false">
+            <strong>MSc Data Science (Advanced Research)</strong>
+            <small>University of Hertfordshire — Distinction</small>
+            <div style="font-size:13px;color:var(--muted);margin-top:8px">
+              Final submission: LLM fine-tuning, PEFT and a research comparison of IA³ and QLoRA for efficient LLM adaptation.
+            </div>
+          </div>
+
+          <div class="card-mini">
+            <strong>Current role</strong>
+            <small>Machine Learning Team Lead Engineer — Kyaas Solutions (06/2023 — 09/2023)</small>
+          </div>
+
+          <div class="card-mini">
+            <strong>Teaching & Research</strong>
+            <small>Lecturer roles at multiple colleges; researcher at The Punjab University (AI / Data Science labs)</small>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="about-h">
+        <div class="section-head">
+          <h3 id="about-h">About</h3>
+        </div>
+        <div class="hero-card">
+          <p>
+           I hold a BSc in Computer Software Engineering from Foundation University Islamabad (2019) and an MSc in Data Science with Advanced Research from the University of Hertfordshire, completed with Distinction. Over around five years of hands-on experience, I have worked across Machine Learning, Deep Learning, Computer Vision, Natural Language Processing and time-series analysis.
+
+Since 2023, my work has also involved senior-level responsibilities in technical leadership, ML architecture and solution development. I build and evaluate practical machine-learning systems, contribute to data pipelines and explore applications ranging from NLP and computer vision to forecasting, healthcare-related AI, agricultural analytics and anomaly detection.
+
+Alongside industry work, I bring experience teaching Computer Science, programming, AI and Data Science, with a focus on clear explanations and practical learning.
+          </p>
+
+          <p style="margin-top:8px">
+            I build production-oriented ML pipelines (MLOps), design training curricula for students and colleagues,
+            and work with clients on end-to-end AI systems. This site summarizes my skills, projects and teaching experience.
+          </p>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" aria-labelledby="skills-h">
+        <div class="section-head">
+          <h3 id="skills-h">Skills & Tools</h3>
+          <div style="color:var(--muted);font-size:13px">Core focus: ML Engineering, NLP, Computer Vision, LLM adaptation</div>
+        </div>
+
+        <div class="grid skills-grid">
+          <div class="skill"><div class="dot" aria-hidden="true"></div><div><strong>Python</strong><div style="font-size:12px;color:var(--muted)">Data engineering & research</div></div></div>
+          <div class="skill"><div class="dot" style="background:#f97316"></div><div><strong>Scikit-learn</strong><div style="font-size:12px;color:var(--muted)">Classical ML</div></div></div>
+          <div class="skill"><div class="dot" style="background:#ff7ab6"></div><div><strong>TensorFlow & Keras</strong><div style="font-size:12px;color:var(--muted)">Deep Learning models</div></div></div>
+          <div class="skill"><div class="dot" style="background:#7dd3c6"></div><div><strong>MLflow</strong><div style="font-size:12px;color:var(--muted)">Experiment tracking & MLOps</div></div></div>
+          <div class="skill"><div class="dot" style="background:#8b5cf6"></div><div><strong>NLP</strong><div style="font-size:12px;color:var(--muted)">Hugging Face,Transformers text pipelines, Chatbots</div></div></div>
+          <div class="skill"><div class="dot" style="background:#06b6d4"></div><div><strong>Computer Vision</strong><div style="font-size:12px;color:var(--muted)">Segmentation, classification, YOLO/Mask R-CNN</div></div></div>
+          <div class="skill"><div class="dot" style="background:#f59e0b"></div><div><strong>Time Series</strong><div style="font-size:12px;color:var(--muted)">ARIMA & SARIMA, LSTM's, Prophet's, Deep AR</div></div></div>
+          <div class="skill"><div class="dot" style="background:#8115ec"></div><div><strong>LLM Specialisation</strong><div style="font-size:9px;color:var(--muted)">Large Language Models, Fine-tuning, PEFT, QLoRA, IA³, LLM Evaluation</div></div></div>
+          <div class="skill"><div class="dot" style="background:#34d399"></div><div><strong>Web / Full Stack</strong><div style="font-size:12px;color:var(--muted)">MERN, Django for ML endpoints</div></div></div>
+        </div>
+        
+      </section>
+
+      <!-- PROJECTS -->
+      
+<!-- PROJECTS -->
+<section id="projects" aria-labelledby="projects-h">
+  <div class="section-head">
+    <h3 id="projects-h">Selected Projects &amp; Research</h3>
+    <div style="color:var(--muted);font-size:13px">
+      Academic research, machine learning and industry projects
+    </div>
+  </div>
+
+  <div class="grid projects-grid">
+
+    <!-- 1. Currently MSc RESEARCH -->
+    <article class="project"
+      aria-labelledby="p1"
+      style="grid-column:1/-1;background:linear-gradient(120deg,rgba(107,157,246,.12),rgba(125,211,198,.12));border:2px solid var(--accent-2);">
+
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+        <span style="font-size:12px;font-weight:800;color:var(--accent)">
+          CURRENTLY MSc RESEARCH
+        </span>
+        <span class="meta">LLM Fine-tuning · PEFT</span>
+      </div>
+
+      <h4 id="p1">Efficient LLM Adaptation: QLoRA vs IA³</h4>
+
+      <p>
+        My MSc research compares QLoRA and IA³ for parameter-efficient
+        adaptation of large language models under constrained computing
+        resources. The work focuses on model fine-tuning, evaluation and
+        comparing efficient adaptation approaches.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: LLMs, QLoRA, IA³, PEFT</span>
+      </div>
+    </article>
+
+    <!-- 2. HALL RECOMMENDATION SYSTEM -->
+    <article class="project" aria-labelledby="p2">
+      <h4 id="p2">Event Halls Recommendation System</h4>
+
+      <p>
+        A hybrid recommendation system combining collaborative filtering
+        and content-based filtering to recommend popular event halls
+        and suitable options based on users' budgets.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Python, Scikit-learn</span>
+      </div>
+    </article>
+
+    <!-- 3. JAZZ CHATBOT -->
+    <article class="project" aria-labelledby="p3">
+      <h4 id="p3">Jazz Package Information Chatbot</h4>
+
+      <p>
+        An NLP-based chatbot that responds to customer queries about
+        mobile packages using NLTK, pattern matching and text-processing
+        techniques.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Python, NLTK, NLP</span>
+      </div>
+    </article>
+
+    <!-- 4. SAUDI REAL ESTATE FORECASTING -->
+    <article class="project" aria-labelledby="p4">
+      <h4 id="p4">Saudi Real Estate Company Forecasting</h4>
+
+      <p>
+        A research-based forecasting project comparing time-series
+        approaches to analyse real-estate company data and predict
+        future time windows. Related research was subsequently
+        published by a colleague.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: LSTM, ARIMA, SARIMA, Prophet, NeuralProphet</span>
+      </div>
+    </article>
+
+    <!-- 5. REAL ESTATE FORECASTING WITH NLP -->
+    <article class="project" aria-labelledby="p5">
+      <h4 id="p5">Saudi Real Estate Prediction with NLP</h4>
+
+      <p>
+        Combined numerical market data from APIs with social-media
+        text signals, including tweets, to explore whether text-based
+        information could contribute to predictions of future market
+        rises and falls.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: NLP, APIs, Time-Series Analysis</span>
+      </div>
+    </article>
+
+    <!-- 6. COTTON LEAF CLASSIFICATION -->
+    <article class="project" aria-labelledby="p6">
+      <h4 id="p6">Cotton Leaf Disease Classification</h4>
+
+      <p>
+        Developed an image-classification approach for cotton leaves
+        covering three disease categories and one healthy category.
+        The described pipeline converted dataset images into
+        one-dimensional array representations for modelling.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Computer Vision, Image Processing, CNN</span>
+      </div>
+    </article>
+
+    <!-- 7. NEURAL CELL DETECTION -->
+    <article class="project" aria-labelledby="p7">
+      <h4 id="p7">Neural Cell Detection with Mask R-CNN</h4>
+
+      <p>
+        A medical image-processing and segmentation research prototype
+        designed to identify infected neurons in patient-report images
+        using Mask R-CNN.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Image Processing, Mask R-CNN, Segmentation</span>
+      </div>
+    </article>
+
+    <!-- 8. MASKED FACE IDENTIFICATION -->
+    <article class="project" aria-labelledby="p8">
+      <h4 id="p8">Masked-Face Identification with GANs</h4>
+
+      <p>
+        A security-focused computer-vision application developed for
+        a Punjab government use case, involving image generation and
+        discriminator components.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: GANs, Computer Vision, Image Processing</span>
+      </div>
+    </article>
+
+    <!-- 9. SKIN CANCER CLASSIFICATION -->
+    <article class="project" aria-labelledby="p9">
+      <h4 id="p9">Skin Cancer Image Classification</h4>
+
+      <p>
+        A medical image-classification project exploring visual patterns
+        associated with possible skin conditions. It is an AI research
+        project, not a substitute for clinical diagnosis.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Machine Learning, Image Classification</span>
+      </div>
+    </article>
+
+    <!-- 10. STOCK AND CRYPTOCURRENCY -->
+    <article class="project" aria-labelledby="p10">
+      <h4 id="p10">Stock Exchange, Bitcoin &amp; Ethereum Prediction</h4>
+
+      <p>
+        A financial forecasting project using Yahoo Finance data to
+        analyse price trends in stocks and cryptocurrencies. My
+        original project notes describe a Bitcoin downturn forecast
+        over a subsequent 60-day period.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Time-Series Analysis, Forecasting</span>
+      </div>
+    </article>
+
+    <!-- 11. IOT BOTNET AND DDOS -->
+    <article class="project" aria-labelledby="p11">
+      <h4 id="p11">IoT Botnet / DDoS Classification</h4>
+
+      <p>
+        A remote client project for Saudi Arabia involving data
+        engineering, feature selection and machine-learning and
+        deep-learning approaches to classify DDoS-related traffic
+        while reducing computational cost. The original project
+        notes report 99% accuracy.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Data Engineering, Feature Selection, ML, DL</span>
+      </div>
+    </article>
+
+    <!-- 12. DIN NEWS FILTER -->
+    <article class="project" aria-labelledby="p12">
+      <h4 id="p12">DIN News Filter for Live Transmission</h4>
+
+      <p>
+        A computer-vision project for a US company with a news channel,
+        designed to detect and blur potentially graphic or explicit
+        imagery during live transmission.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: YOLO, Image Processing, Computer Vision</span>
+      </div>
+    </article>
+
+    <!-- 13. ONLINE AI DOCTOR -->
+    <article class="project" aria-labelledby="p13">
+      <h4 id="p13">Online AI Doctor — Healthcare Research</h4>
+
+      <p>
+        A US research-centre project involving collaboration with
+        clinicians from different specialist domains. Reviewed reports
+        were organised into a dataset for developing ML workflows to
+        explore disease patterns and patient-condition severity.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: Machine Learning, Healthcare Data, Classification</span>
+      </div>
+    </article>
+
+    <!-- 14. KRISS.AI -->
+    <article class="project" aria-labelledby="p14">
+      <h4 id="p14">KRISS.AI — AI Consulting</h4>
+
+      <p>
+        A Kyaas Solutions client project in which I supported the
+        product owner and guided the AI development team, contributing
+        to the application's machine-learning architecture and
+        cloud-server design.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: AI Consulting, ML Architecture, Cloud</span>
+      </div>
+
+      <a class="btn-small"
+         href="https://www.kriss.ai/"
+         target="_blank"
+         rel="noopener noreferrer">
+        Visit KRISS.AI ↗
+      </a>
+    </article>
+
+    <!-- 15. OMAN AGRICULTURAL ENHANCEMENT -->
+    <article class="project" aria-labelledby="p15">
+      <h4 id="p15">Oman Agricultural Enhancement</h4>
+
+      <p>
+        An IoT and agricultural computer-vision project connecting
+        specialist cameras to Azure cloud infrastructure. YOLOv8 was
+        used to analyse client-provided crop imagery and generate
+        reports on plant health, soil-moisture indicators and anomalies.
+      </p>
+
+      <div class="meta">
+        <span>Technologies: YOLOv8, Azure, IoT, Computer Vision</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section id="experience" aria-labelledby="exp-h">
+
+  <div class="section-head">
+    <h3 id="exp-h">Professional Experience</h3>
+
+    <div style="color:var(--muted);font-size:13px">
+      Selected professional roles
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="item">
+      <div class="meta-line">
+        <strong>Machine Learning Team Lead Engineer</strong>
+        <span>— Kyaas Solutions</span>
+        <span style="margin-left:auto;color:var(--muted)">
+          06/2023 — 09/2023
+        </span>
+      </div>
+
+      <p style="margin-top:8px;color:var(--muted)">
+        Led machine-learning engineering activities, worked with clients,
+        contributed to ML architecture design and supervised
+        machine-learning and development teams.
+      </p>
+    </div>
+
+    <div class="item">
+      <div class="meta-line">
+        <strong>Senior Machine Learning Engineer</strong>
+        <span>— Sigma Square</span>
+        <span style="margin-left:auto;color:var(--muted)">
+          02/2023 — 05/2023
+        </span>
+      </div>
+
+      <p style="margin-top:8px;color:var(--muted)">
+        Contributed to machine-learning projects, supported junior
+        team members and worked on MLOps architecture, MLflow,
+        AWS and data pipelines.
+      </p>
+    </div>
+
+    <div class="item">
+      <div class="meta-line">
+        <strong>Machine Learning Engineer</strong>
+        <span>— University of South Asia, Centre of Innovation &amp; Entrepreneurship</span>
+        <span style="margin-left:auto;color:var(--muted)">
+          03/2022 — 01/2023
+        </span>
+      </div>
+
+      <p style="margin-top:8px;color:var(--muted)">
+        Contributed to healthcare-related machine-learning work,
+        including data gathering with clinician input and the
+        development of classification models and prototypes.
+      </p>
+    </div>
+
+    <div class="item">
+      <div class="meta-line">
+        <strong>Machine Learning Engineer</strong>
+        <span>— Zmedia Technology</span>
+        <span style="margin-left:auto;color:var(--muted)">
+          07/2018 — 02/2022
+        </span>
+      </div>
+
+      <p style="margin-top:8px;color:var(--muted)">
+        Worked across client projects involving machine-learning
+        pipelines, data preparation and applied AI workflows.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+      <!-- EXPERIENCE -->
+      <section id="experience" aria-labelledby="exp-h">
+        <div class="section-head">
+          <h3 id="exp-h">Professional Experience</h3>
+          <div style="color:var(--muted);font-size:13px">Selected roles (most recent first)</div>
+        </div>
+
+        <div class="timeline">
+          <div class="item">
+            <div class="meta-line"><strong>Machine Learning Team Lead Engineer</strong><span> — Kyaas Solutions</span><span style="margin-left:auto;color:var(--muted)">06/2023 — 09/2023</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Team lead responsibilities: client interaction, design ML architecture, supervise ML & development teams.</p>
+          </div>
+
+          <div class="item">
+            <div class="meta-line"><strong>Senior Machine Learning Engineer</strong><span> — Sigma Square</span><span style="margin-left:auto;color:var(--muted)">02/2023 — 05/2023</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Maintained MLOps architecture, mentored juniors, worked with MLflow, AWS and data pipelines.</p>
+          </div>
+
+          <div class="item">
+            <div class="meta-line"><strong>Machine Learning Engineer</strong><span> — University of South Asia (Center of Innovation & Entrepreneurship)</span><span style="margin-left:auto;color:var(--muted)">03/2022 — 01/2023</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Built health-care classification models, from data gathering with clinician input to deployment prototypes.</p>
+          </div>
+
+          <div class="item">
+            <div class="meta-line"><strong>Machine Learning Engineer</strong><span> — Zmedia Technology</span><span style="margin-left:auto;color:var(--muted)">07/2018 — 02/2022</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Worked across multiple international projects, designing ML pipelines and production workflows.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEACHING -->
+      <section id="teaching" aria-labelledby="teach-h">
+        <div class="section-head">
+          <h3 id="teach-h">Teaching & Instruction</h3>
+        </div>
+
+        <div class="timeline">
+          <div class="item">
+            <div class="meta-line"><strong>Lecturer — Super Wings Group of Colleges</strong><span style="margin-left:auto;color:var(--muted)">2019 — 2020</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Taught programming fundamentals, C language, Databases, Operating Systems and IT practicals for grade 10 to M.Com levels. Promoted to senior lecturer following strong performance.</p>
+          </div>
+
+          <div class="item">
+            <div class="meta-line"><strong>Lecturer — Punjab Group of Colleges</strong><span style="margin-left:auto;color:var(--muted)">2020 — 2022</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Delivered courses in C, Databases, Operating Systems and practical IT labs. Achieved highly positive student outcomes.</p>
+          </div>
+
+          <div class="item">
+            <div class="meta-line"><strong>Researcher & Lab Instructor — The Punjab University Lahore</strong><span style="margin-left:auto;color:var(--muted)">2023 — 2023</span></div>
+            <p style="margin-top:8px;color:var(--muted)">Instructor for NAVTTC youth skills program: Python, ML, Deep Learning, Computer Vision, NLP, Time Series and Azure labs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" aria-labelledby="edu-h">
+        <div class="section-head">
+          <h3 id="edu-h">Education</h3>
+        </div>
+
+        <div class="edu">
+          <div class="highlight" role="note" aria-label="MSc highlight">
+            <strong>MSc Data Science and Advanced Research (University of Hertfordshire)</strong>
+            <div style="font-size:13px;color:var(--muted);margin-top:6px">
+              Course period: 2023 — 2025. Final submission: LLM fine-tuning, PEFT and a comparative study of IA³ and QLoRA for efficient LLM adaptation.
+              <div style="font-size:13px;color:var(--muted);margin-top:6px"><em>Distinction</em>.</div>
+            </div>
+          </div>
+
+          <div class="item" style="margin-top:8px">
+            <strong>Bachelor in Computer Software Engineering</strong>
+            <div style="font-size:13px;color:var(--muted)">Foundation University Islamabad — Final year project: Event Halls Recommendation System</div>
+          </div>
+
+          <div class="item" style="margin-top:8px">
+            <strong>Additional & Professional</strong>
+            <div style="font-size:13px;color:var(--muted)">Certificates & training: Azure AI (AI-900), Huawei Big Data HCIA-AI, MERN stack bootcamp, NAVTTC AI teaching program.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contact-h">
+        <div class="section-head">
+          <h3 id="contact-h">Contact</h3>
+          <div style="color:var(--muted);font-size:13px">I'm open to teaching roles, research collaborations and ML consultancy.</div>
+        </div>
+
+        <div class="grid contact-grid">
+          <div class="hero-card" aria-hidden="false">
+            <form id="contactForm" aria-label="Contact form">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" placeholder="Your full name" required>
+
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or opportunity" required></textarea>
+
+              <div style="display:flex;gap:8px;align-items:center">
+                <button type="submit">Send message</button>
+                <button type="button" id="copyEmail" aria-label="Copy email to clipboard">Copy email</button>
+              </div>
+
+              <div id="formNote" style="font-size:13px;color:var(--muted);margin-top:8px">
+                Note: This form is client-only. It will create a mailto draft in your mail client. For production, connect to a backend or form service.
+              </div>
+            </form>
+          </div>
+
+          <aside class="hero-card" aria-labelledby="contactDetails">
+            <h4 id="contactDetails">Quick contact</h4>
+            <p class="meta" style="margin-top:6px;">
+              Email: <a href="mailto:mirzajamal750@gmail.com">mirzajamal750@gmail.com</a><br>
+              Phone: <a href="tel:+447946759658">+44 7946 759658</a><br>
+              Location: Tooting, London, United Kingdom
+            </p>
+
+            <h5>Links</h5>
+
+            <div class="social-buttons">
+              <a class="social-button linkedin"
+                 href="https://www.linkedin.com/in/mirza-jamal-mlengg/"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open Mirza's LinkedIn profile in a new tab">
+                LinkedIn ↗
+              </a>
+              <a class="social-button github"
+                 href="https://github.com/mirzajamalnasir750"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open Mirza's GitHub profile in a new tab">
+                GitHub ↗
+              </a>
+            </div>
+</aside>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div style="max-width:var(--max-width);margin:0 auto;padding-top:8px">
+        <div style="margin-bottom:8px">© <strong>Mirza Muhammad Jamal Nasir</strong> — AI & Machine Learning Engineer</div>
+        <div style="color:var(--muted)">Made with HTML, CSS & JavaScript.</div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    // Mobile menu toggle (simple accessible behavior)
+    (function(){
+      const btn = document.getElementById('menuToggle');
+      const nav = document.querySelector('nav');
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if(nav.style.display === 'flex'){
+          nav.style.display = '';
+        } else {
+          nav.style.display = 'flex';
+          nav.style.flexDirection = 'column';
+          nav.style.position = 'absolute';
+          nav.style.right = '16px';
+          nav.style.top = '74px';
+          nav.style.background = 'var(--card)';
+          nav.style.padding = '12px';
+          nav.style.borderRadius = '12px';
+          nav.style.boxShadow = 'var(--shadow)';
+        }
+      });
+
+      // Smooth scroll for same-page navigation
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const target = document.querySelector(this.getAttribute('href'));
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({behavior:'smooth',block:'start'});
+            history.replaceState(null,null,this.getAttribute('href'));
+          }
+        });
+      });
+
+      // Contact form: open mailto draft as default behavior (no backend)
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+        const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\n\\n' + message);
+        // Fallback: open mail client draft
+        window.location.href = 'mailto:mirzajamal750@gmail.com?subject=' + subject + '&body=' + body;
+      });
+
+      // Copy email helper
+      document.getElementById('copyEmail').addEventListener('click', async ()=>{
+        try{
+          await navigator.clipboard.writeText('mirzajamal750@gmail.com');
+          alert('Email copied to clipboard: mirzajamal750@gmail.com');
+        }catch(err){
+          alert('Copy failed — please copy manually: mirzajamal750@gmail.com');
+        }
+      });
+
+      // Accessibility: ensure first focusable elements get visible focus outlines
+      window.addEventListener('keyup', (e)=>{
+        if(e.key === 'Tab'){
+          document.body.classList.add('show-focus');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
