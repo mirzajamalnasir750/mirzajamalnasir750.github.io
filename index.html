@@ -5,197 +5,467 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mirza Muhammad Jamal Nasir — ML Engineer & Educator</title>
   <meta name="description" content="Mirza Muhammad Jamal Nasir — AI & Machine Learning Engineer, Computer Science educator. MSc Data Science (Advanced Research). Projects: NLP, CV, time series, LLM fine-tuning research (QLoRA vs IA³).">
-  <style>
-    /* ---- Basic reset & typography ---- */
-    :root{
-      --bg: #fbfcfd;
-      --card: #ffffff;
-      --muted: #6b7280;
-      --accent: #6b9df6;
-      --accent-2: #7dd3c6;
-      --text: #0f172a;
-      --glass: rgba(255,255,255,0.6);
-      --max-width: 1100px;
-      --radius: 12px;
-      --shadow: 0 6px 20px rgba(15,23,42,0.06);
-      --glass-border: rgba(99,102,241,0.06);
-      --focus: 3px solid rgba(107,157,246,0.18);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      color:var(--text);
-      background: linear-gradient(180deg,var(--bg),#f6f9ff);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      padding:24px 16px;
-      display:flex;
-      justify-content:center;
-    }
-    .wrap{width:100%;max-width:var(--max-width);}
 
-    /* ---- Header ---- */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:28px;
+<style>
+  /* ---- Basic reset & typography ---- */
+  :root {
+    --bg: #fbfcfd;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #6b9df6;
+    --accent-2: #7dd3c6;
+    --text: #0f172a;
+    --glass: rgba(255,255,255,0.6);
+    --max-width: 1100px;
+    --radius: 12px;
+    --shadow: 0 6px 20px rgba(15,23,42,0.06);
+    --glass-border: rgba(99,102,241,0.06);
+    --focus: 3px solid rgba(107,157,246,0.18);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: var(--text);
+    background: linear-gradient(180deg, var(--bg), #f6f9ff);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--max-width);
+  }
+
+  /* ---- Header ---- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  nav {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  nav a:focus,
+  nav a:hover {
+    color: var(--text);
+    outline: none;
+    background: rgba(107,157,246,0.06);
+  }
+
+  .cta {
+    background: linear-gradient(90deg, var(--accent), #8fb9ff);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid transparent;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .menu-toggle:focus {
+    outline: none;
+    box-shadow: var(--focus);
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .hero-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+  }
+
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+
+  h2 {
+    font-size: 16px;
+    margin: 0;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    margin: 14px 0 18px;
+    color: #2b3a4a;
+  }
+
+  .contact-line {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #f4f8ff, #f6fff9);
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #eef2ff;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  /* ---- Right column quick stats ---- */
+  .quick {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card-mini {
+    background: linear-gradient(180deg, #ffffff, #fbfbff);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .card-mini strong {
+    font-size: 14px;
+  }
+
+  .card-mini small {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* ---- Sections ---- */
+  section {
+    margin-bottom: 28px;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-head h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .skill {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .skill .dot {
+    display: block;
+    flex: 0 0 12px;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ---- Projects ---- */
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .project {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .project h4 {
+    margin: 0;
+  }
+
+  .project p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .project .meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .btn-small {
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    background: rgba(107,157,246,0.08);
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ---- Experience / Teaching ---- */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .item {
+    background: var(--card);
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+  }
+
+  .meta-line {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ---- Education ---- */
+  .edu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      90deg,
+      rgba(107,157,246,0.08),
+      rgba(125,211,198,0.05)
+    );
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+  }
+
+  /* ---- Contact form ---- */
+  .contact-grid {
+    grid-template-columns: 1fr 360px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input,
+  textarea,
+  button,
+  select {
+    font: inherit;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e6eefc;
+    background: white;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: var(--focus);
+  }
+
+  /* Contact form buttons */
+  button {
+    background: linear-gradient(90deg, var(--accent), #8fb9ff);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    box-shadow:
+      0 6px 20px rgba(15,23,42,0.06),
+      inset 0 2px 3px rgba(255,255,255,0.55);
+  }
+
+  button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  footer {
+    margin-top: 20px;
+    padding: 20px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 980px) {
+    .hero {
+      grid-template-columns: 1fr;
     }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      text-decoration:none;
-      color:var(--text);
+
+    .contact-grid {
+      grid-template-columns: 1fr;
     }
-    .avatar{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;box-shadow:var(--shadow);
+  }
+
+  @media (max-width: 720px) {
+    nav {
+      display: none;
     }
-    nav{display:flex;gap:14px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px;border-radius:8px}
-    nav a:focus,nav a:hover{color:var(--text);outline:none;background:rgba(107,157,246,0.06)}
-    .cta{background:linear-gradient(90deg,var(--accent),#8fb9ff);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:var(--shadow)}
-    .menu-toggle{display:none;background:none;border:2px solid transparent;padding:8px;border-radius:8px}
-    .menu-toggle:focus{outline:none;box-shadow:var(--focus)}
 
-    /* ---- Hero ---- */
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:24px;
-      align-items:center;
-      margin-bottom:32px;
-    }
-    .hero-card{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:var(--shadow);
-      border:1px solid var(--glass-border);
-    }
-    h1{font-size:28px;margin:0 0 8px}
-    h2{font-size:16px;margin:0;color:var(--muted);font-weight:600}
-    .hero-intro{margin:14px 0 18px;color:#2b3a4a}
-    .contact-line{display:flex;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#f4f8ff,#f6fff9);padding:8px 10px;border-radius:10px;border:1px solid #eef2ff;font-weight:600;color:#0f172a}
-
-    /* ---- Right column quick stats ---- */
-    .quick{
-      display:flex;flex-direction:column;gap:12px;
-    }
-    .card-mini{background:linear-gradient(180deg,#ffffff,#fbfbff);padding:16px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
-    .card-mini strong{font-size:14px}
-    .card-mini small{color:var(--muted);font-size:13px}
-
-    /* ---- Sections ---- */
-    section{margin-bottom:28px}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}
-    .section-head h3{margin:0;font-size:18px}
-    .grid{display:grid;gap:16px}
-    .skills-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
-    .skill{background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--glass-border);display:flex;align-items:center;gap:10px}
-    .skill .dot {
-  display: block;
-  flex: 0 0 12px;
-  width: 12px;
-  height: 12px;
-  min-width: 12px;
-  min-height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-    /* ---- Projects ---- */
-    .projects-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .project{background:var(--card);padding:16px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
-    .project h4{margin:0}
-    .project p{margin:0;color:var(--muted);font-size:14px}
-    .project .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-    .btn-small{display:inline-block;padding:8px 10px;border-radius:10px;text-decoration:none;background:rgba(107,157,246,0.08);color:var(--accent);font-weight:700}
-
-    /* ---- Experience / Teaching ---- */
-    .timeline{display:flex;flex-direction:column;gap:12px}
-    .item{background:var(--card);padding:14px;border-radius:10px;border:1px solid var(--glass-border);box-shadow:var(--shadow)}
-    .meta-line{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px}
-
-    /* ---- Education ---- */
-    .edu{display:flex;flex-direction:column;gap:8px}
-    .highlight{background:linear-gradient(90deg,rgba(107,157,246,0.08),rgba(125,211,198,0.05));padding:12px;border-radius:10px;border:1px solid var(--glass-border)}
-
-    /* ---- Contact ---- */
-    .contact-grid{grid-template-columns:1fr 360px}
-    form{display:flex;flex-direction:column;gap:10px}
-    input,textarea,button,select{
-      font:inherit;padding:10px;border-radius:8px;border:1px solid #e6eefc;background:white;
-    }
-    input:focus,textarea:focus{outline:none;box-shadow:var(--focus)}
-    button{background:linear-gradient(90deg,var(--accent),#8fb9ff);color:white;border:none;cursor:pointer;padding:12px;border-radius:10px;font-weight:700}
-    button[disabled]{opacity:0.6;cursor:default}
-
-    footer{margin-top:20px;padding:20px 0;text-align:center;color:var(--muted);font-size:14px}
-
-    /* ---- Responsive ---- */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr; }
-      .contact-grid{grid-template-columns:1fr}
-    }
-    @media (max-width:720px){
-      nav{display:none}
-      .menu-toggle{display:inline-flex}
-      header{align-items:center}
-    }
-    /* small accessible focus visibility */
-    a:focus-visible,button:focus-visible{outline:none;box-shadow:var(--focus)}
-
-
-    /* LinkedIn and GitHub profile buttons */
-    .social-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .social-button {
+    .menu-toggle {
       display: inline-flex;
+    }
+
+    header {
       align-items: center;
-      justify-content: center;
-      padding: 11px 18px;
-      border: 1px solid transparent;
-      border-radius: 10px;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 750;
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, background-color 0.25s ease,
-                  color 0.25s ease, box-shadow 0.25s ease,
-                  border-color 0.25s ease;
     }
-    .social-button.linkedin {
-      background: #0A66C2;
-      border-color: #0A66C2;
-    }
-    .social-button.github {
-      background: #24292f;
-      border-color: #24292f;
-    }
-    .social-button:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.08);
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
-    }
-    .social-button:active {
-      transform: translateY(-1px) scale(0.98);
-    }
-    .social-button:focus-visible {
-      outline: 3px solid var(--accent-2);
-      outline-offset: 3px;
-    }
-  </style>
+  }
+
+  /* ---- Accessible keyboard focus ---- */
+  a:focus-visible,
+  button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus);
+  }
+
+  /* ---- Social and Quick Contact buttons ---- */
+  .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .social-buttons a,
+  .quick-contact-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, var(--accent), #8fb9ff);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.85);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow:
+      0 6px 20px rgba(15,23,42,0.06),
+      inset 0 2px 3px rgba(255,255,255,0.65),
+      inset 0 -2px 3px rgba(59,130,246,0.12);
+    text-shadow: 0 1px 2px rgba(30,64,175,0.15);
+  }
+
+  /* No moving animation; only a subtle colour change on hover */
+  .social-buttons a:hover,
+  .quick-contact-buttons a:hover {
+    filter: brightness(1.04);
+  }
+
+  .social-buttons a:active,
+  .quick-contact-buttons a:active {
+    filter: brightness(0.98);
+  }
+</style>
 </head>
 <body>
   <div class="wrap" id="top">
@@ -241,8 +511,8 @@
 
           <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
 <a class="btn-small"
-   href="./Mirza-Muhammad-Jamal-Nasir-CV.pdf"
-   download="Mirza-Muhammad-Jamal-Nasir-CV.pdf">
+   href="./MIRZA MUHAMMAD JAMAL NASIR-detailcv.pdf"
+   download="MIRZA MUHAMMAD JAMAL NASIR-detailcv.pdf">
   Download CV ↓
 </a>
 
@@ -771,7 +1041,7 @@
 
               <div style="display:flex;gap:8px;align-items:center">
                 <button type="submit">Send message</button>
-                <button type="button" id="copyEmail" aria-label="Copy email to clipboard">Copy email</button>
+                <button type="button" id="copyEmail" aria-label="Copy email to clipboard">Send email</button>
               </div>
 
               <div id="formNote" style="font-size:13px;color:var(--muted);margin-top:8px">
@@ -781,47 +1051,152 @@
           </div>
 
 
+
+
+
+
+
 <aside class="hero-card" aria-labelledby="contactDetails">
   <h4 id="contactDetails">Quick contact</h4>
 
-  <div class="social-buttons" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
-
-    <a href="mailto:mirzajamal750@gmail.com"
-       style="display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; background-color:#2563eb; color:#ffffff; border:1px solid #2563eb; border-radius:8px; text-decoration:none; font-weight:600;">
+  <div class="social-buttons quick-contact-buttons">
+    <a href="mailto:mirzajamal750@gmail.com">
       ✉ Email Me
     </a>
 
-    <a href="tel:+447946759658"
-       style="display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; background-color:#0f766e; color:#ffffff; border:1px solid #0f766e; border-radius:8px; text-decoration:none; font-weight:600;">
-      ☎ Call Me
-    </a>
+    <a href="https://wa.me/447946759658"
+   target="_blank"
+   rel="noopener noreferrer">
+  WhatsApp Me
+</a>
+<a href="tel:+447946759658">
+  📞 Call by Number
+</a>
 
-    <a href="https://www.google.com/maps/search/?api=1&amp;query=Tooting%2C+London%2C+United+Kingdom"
-       target="_blank" rel="noopener noreferrer"
-       style="display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; background-color:#374151; color:#ffffff; border:1px solid #374151; border-radius:8px; text-decoration:none; font-weight:600;">
+    <a
+      href="https://www.google.com/maps/search/?api=1&amp;query=Tooting%2C+London%2C+United+Kingdom"
+      target="_blank"
+      rel="noopener noreferrer">
       📍 Tooting, London
     </a>
-
   </div>
 
   <h5>Links</h5>
 
-  <div class="social-buttons" style="display:flex; flex-wrap:wrap; gap:10px;">
-
-    <a href="https://www.linkedin.com/in/mirza-jamal-mlengg/"
-       target="_blank" rel="noopener noreferrer"
-       style="display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; background-color:#0a66c2; color:#ffffff; border:1px solid #0a66c2; border-radius:8px; text-decoration:none; font-weight:600;">
+  <div class="social-buttons quick-contact-buttons">
+    <a
+      href="https://www.linkedin.com/in/mirza-jamal-mlengg/"
+      target="_blank"
+      rel="noopener noreferrer">
       LinkedIn ↗
     </a>
 
-    <a href="https://github.com/mirzajamalnasir750"
-       target="_blank" rel="noopener noreferrer"
-       style="display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; background-color:#24292f; color:#ffffff; border:1px solid #24292f; border-radius:8px; text-decoration:none; font-weight:600;">
+    <a
+      href="https://github.com/mirzajamalnasir750"
+      target="_blank"
+      rel="noopener noreferrer">
       GitHub ↗
     </a>
-
   </div>
 </aside>
+
+
+
+ 
+
+
+<style>
+.quick-contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.contact-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.65);
+  border-radius: 11px;
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  box-shadow:
+    0 5px 14px rgba(30,64,175,0.14),
+    inset 0 1px 1px rgba(255,255,255,0.4);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              filter 0.25s ease;
+}
+
+/* Glossy reflection */
+.contact-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(255,255,255,0.38),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.contact-btn:hover::before {
+  left: 150%;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+  box-shadow:
+    0 9px 22px rgba(37,99,235,0.23),
+    inset 0 1px 2px rgba(255,255,255,0.5);
+}
+
+/* Lighter colours */
+.email-btn {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.call-btn {
+  background: linear-gradient(135deg, #5eead4, #14b8a6);
+}
+
+.location-btn {
+  background: linear-gradient(135deg, #64748b, #475569);
+}
+
+.linkedin-btn {
+  background: linear-gradient(135deg, #60a5fa, #0a66c2);
+}
+
+.github-btn {
+  background: linear-gradient(135deg, #525b66, #343a40);
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-btn,
+  .contact-btn::before {
+    transition: none;
+  }
+}
+</style>
+
 
 
           
